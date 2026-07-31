@@ -1,0 +1,4 @@
+implementation,mib_per_second
+AES-XTS basic,69.470141
+AES-XTS AES-NI,507.616164
+AES-XTS VAES x8,928.789937

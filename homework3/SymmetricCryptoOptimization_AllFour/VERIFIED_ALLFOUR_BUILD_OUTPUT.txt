@@ -1,0 +1,28 @@
+cc -Iinclude -O3 -std=gnu11 -Wall -Wextra -Wpedantic -mssse3 -maes -mavx2 -mvaes -mpclmul -c src/aes_common.c -o src/aes_common.o
+cc -Iinclude -O3 -std=gnu11 -Wall -Wextra -Wpedantic -mssse3 -maes -mavx2 -mvaes -mpclmul -c src/aes_basic.c -o src/aes_basic.o
+cc -Iinclude -O3 -std=gnu11 -Wall -Wextra -Wpedantic -mssse3 -maes -mavx2 -mvaes -mpclmul -c src/aes_ttable.c -o src/aes_ttable.o
+cc -Iinclude -O3 -std=gnu11 -Wall -Wextra -Wpedantic -mssse3 -maes -mavx2 -mvaes -mpclmul -c src/aes_shuffle.c -o src/aes_shuffle.o
+cc -Iinclude -O3 -std=gnu11 -Wall -Wextra -Wpedantic -mssse3 -maes -mavx2 -mvaes -mpclmul -c src/aes_aesni.c -o src/aes_aesni.o
+cc -Iinclude -O3 -std=gnu11 -Wall -Wextra -Wpedantic -mssse3 -maes -mavx2 -mvaes -mpclmul -c src/aes_vaes.c -o src/aes_vaes.o
+cc -Iinclude -O3 -std=gnu11 -Wall -Wextra -Wpedantic -mssse3 -maes -mavx2 -mvaes -mpclmul -c src/aes_ctr.c -o src/aes_ctr.o
+cc -Iinclude -O3 -std=gnu11 -Wall -Wextra -Wpedantic -mssse3 -maes -mavx2 -mvaes -mpclmul -c src/aes_gcm.c -o src/aes_gcm.o
+cc -Iinclude -O3 -std=gnu11 -Wall -Wextra -Wpedantic -mssse3 -maes -mavx2 -mvaes -mpclmul -c src/aes_xts.c -o src/aes_xts.o
+cc -Iinclude -O3 -std=gnu11 -Wall -Wextra -Wpedantic -mssse3 -maes -mavx2 -mvaes -mpclmul -c src/sm4_common.c -o src/sm4_common.o
+cc -Iinclude -O3 -std=gnu11 -Wall -Wextra -Wpedantic -mssse3 -maes -mavx2 -mvaes -mpclmul -c src/sm4_basic.c -o src/sm4_basic.o
+cc -Iinclude -O3 -std=gnu11 -Wall -Wextra -Wpedantic -mssse3 -maes -mavx2 -mvaes -mpclmul -c src/sm4_ttable.c -o src/sm4_ttable.o
+cc -Iinclude -O3 -std=gnu11 -Wall -Wextra -Wpedantic -mssse3 -maes -mavx2 -mvaes -mpclmul -c src/sm4_avx2.c -o src/sm4_avx2.o
+cc -Iinclude -O3 -std=gnu11 -Wall -Wextra -Wpedantic -mssse3 -maes -mavx2 -mvaes -mpclmul -c src/sm4_ctr.c -o src/sm4_ctr.o
+cc -Iinclude -O3 -std=gnu11 -Wall -Wextra -Wpedantic -mssse3 -maes -mavx2 -mvaes -mpclmul -c src/gift64.c -o src/gift64.o
+cc -Iinclude -O3 -std=gnu11 -Wall -Wextra -Wpedantic -mssse3 -maes -mavx2 -mvaes -mpclmul -c src/twine.c -o src/twine.o
+cc -Iinclude -O3 -std=gnu11 -Wall -Wextra -Wpedantic -mssse3 -maes -mavx2 -mvaes -mpclmul -c tests/test_bench.c -o tests/test_bench.o
+cc -Iinclude -O3 -std=gnu11 -Wall -Wextra -Wpedantic -mssse3 -maes -mavx2 -mvaes -mpclmul -c tests/test_ctr_bench.c -o tests/test_ctr_bench.o
+cc -Iinclude -O3 -std=gnu11 -Wall -Wextra -Wpedantic -mssse3 -maes -mavx2 -mvaes -mpclmul -c tests/test_gcm_bench.c -o tests/test_gcm_bench.o
+cc -Iinclude -O3 -std=gnu11 -Wall -Wextra -Wpedantic -mssse3 -maes -mavx2 -mvaes -mpclmul -c tests/test_xts_bench.c -o tests/test_xts_bench.o
+cc -Iinclude -O3 -std=gnu11 -Wall -Wextra -Wpedantic -mssse3 -maes -mavx2 -mvaes -mpclmul -c tests/test_sm4_bench.c -o tests/test_sm4_bench.o
+cc -Iinclude -O3 -std=gnu11 -Wall -Wextra -Wpedantic -mssse3 -maes -mavx2 -mvaes -mpclmul -c tests/test_lightweight_bench.c -o tests/test_lightweight_bench.o
+cc src/aes_common.o src/aes_basic.o src/aes_ttable.o src/aes_shuffle.o src/aes_aesni.o src/aes_vaes.o src/aes_ctr.o src/aes_gcm.o src/aes_xts.o src/sm4_common.o src/sm4_basic.o src/sm4_ttable.o src/sm4_avx2.o src/sm4_ctr.o src/gift64.o src/twine.o tests/test_bench.o  -o aes_benchmark
+cc src/aes_common.o src/aes_basic.o src/aes_ttable.o src/aes_shuffle.o src/aes_aesni.o src/aes_vaes.o src/aes_ctr.o src/aes_gcm.o src/aes_xts.o src/sm4_common.o src/sm4_basic.o src/sm4_ttable.o src/sm4_avx2.o src/sm4_ctr.o src/gift64.o src/twine.o tests/test_ctr_bench.o  -o ctr_benchmark
+cc src/aes_common.o src/aes_basic.o src/aes_ttable.o src/aes_shuffle.o src/aes_aesni.o src/aes_vaes.o src/aes_ctr.o src/aes_gcm.o src/aes_xts.o src/sm4_common.o src/sm4_basic.o src/sm4_ttable.o src/sm4_avx2.o src/sm4_ctr.o src/gift64.o src/twine.o tests/test_gcm_bench.o  -o gcm_benchmark
+cc src/aes_common.o src/aes_basic.o src/aes_ttable.o src/aes_shuffle.o src/aes_aesni.o src/aes_vaes.o src/aes_ctr.o src/aes_gcm.o src/aes_xts.o src/sm4_common.o src/sm4_basic.o src/sm4_ttable.o src/sm4_avx2.o src/sm4_ctr.o src/gift64.o src/twine.o tests/test_xts_bench.o  -o xts_benchmark
+cc src/aes_common.o src/aes_basic.o src/aes_ttable.o src/aes_shuffle.o src/aes_aesni.o src/aes_vaes.o src/aes_ctr.o src/aes_gcm.o src/aes_xts.o src/sm4_common.o src/sm4_basic.o src/sm4_ttable.o src/sm4_avx2.o src/sm4_ctr.o src/gift64.o src/twine.o tests/test_sm4_bench.o  -o sm4_benchmark
+cc src/aes_common.o src/aes_basic.o src/aes_ttable.o src/aes_shuffle.o src/aes_aesni.o src/aes_vaes.o src/aes_ctr.o src/aes_gcm.o src/aes_xts.o src/sm4_common.o src/sm4_basic.o src/sm4_ttable.o src/sm4_avx2.o src/sm4_ctr.o src/gift64.o src/twine.o tests/test_lightweight_bench.o  -o lightweight_benchmark

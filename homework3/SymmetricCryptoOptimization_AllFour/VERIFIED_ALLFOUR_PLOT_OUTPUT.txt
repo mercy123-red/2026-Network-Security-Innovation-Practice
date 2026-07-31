@@ -1,0 +1,4 @@
+python3 scripts/merge_results.py
+wrote /mnt/data/SymmetricCryptoOptimization_AllFour/results/all_benchmarks.csv (29 rows)
+MPLBACKEND=Agg python3 scripts/plot_results.py
+wrote /mnt/data/SymmetricCryptoOptimization_AllFour/results/performance.png

@@ -1,0 +1,84 @@
+./aes_benchmark 64
+AES-128 known-answer tests (FIPS-197 vector)
+[basic encrypt       ] PASS
+[T-table encrypt     ] PASS
+[shuffle encrypt     ] PASS
+[AES-NI encrypt      ] PASS
+[basic decrypt       ] PASS
+[T-table decrypt     ] PASS
+[AES-NI decrypt      ] PASS
+[VAES x8 encrypt     ] PASS
+
+Benchmark size: 64 MiB per implementation
+AES-128 basic               52.79 MiB/s  checksum=9e
+AES-128 T-table            267.19 MiB/s  checksum=9e
+AES-128 shuffle             97.31 MiB/s  checksum=9e
+AES-128 AES-NI             783.93 MiB/s  checksum=9e
+AES-128 VAES x8           6281.24 MiB/s  checksum=e7
+
+CSV written to results/aes_benchmark.csv
+./ctr_benchmark 128
+AES-128 CTR known-answer tests (NIST SP 800-38A F.5.1)
+[CTR basic             ] PASS
+[CTR T-table           ] PASS
+[CTR shuffle           ] PASS
+[CTR AES-NI            ] PASS
+[CTR VAES x8           ] PASS
+[partial/carry test    ] PASS
+[VAES loop+tail test   ] PASS
+
+CTR benchmark size: 128 MiB per implementation
+AES-CTR basic                 44.57 MiB/s  checksum=28
+AES-CTR T-table              266.79 MiB/s  checksum=28
+AES-CTR shuffle               97.52 MiB/s  checksum=28
+AES-CTR AES-NI               686.45 MiB/s  checksum=28
+AES-CTR VAES x8             4035.97 MiB/s  checksum=28
+
+CSV written to results/ctr_benchmark.csv
+./gcm_benchmark 64
+AES-128-GCM known-answer and robustness tests
+[GHASH basic vs PCLMUL       ] PASS
+[basic: empty plaintext      ] PASS
+[basic: one zero block       ] PASS
+[AESNI+PCLMUL: zero block    ] PASS
+[VAES8+PCLMUL: zero block    ] PASS
+[basic: AAD + partial block  ] PASS
+[AESNI+PCLMUL: AAD+partial   ] PASS
+[VAES8+PCLMUL: AAD+partial   ] PASS
+[modified tag rejection      ] PASS
+[general IV + in-place + tail] PASS
+
+GCM encryption benchmark: 64 MiB per implementation
+AES-GCM basic                        9.76 MiB/s  tag0=75
+AESNI + PCLMULQDQ                  354.66 MiB/s  tag0=75
+VAES x8 + PCLMULQDQ                502.74 MiB/s  tag0=75
+CSV written to results/gcm_benchmark.csv
+./xts_benchmark 128
+AES-128-XTS known-answer tests (cross-checked with OpenSSL/cryptography)
+[basic full blocks        ] PASS
+[AES-NI full blocks       ] PASS
+[VAES x8 full blocks      ] PASS
+[basic CTS tail           ] PASS
+[AES-NI CTS tail          ] PASS
+[VAES x8 CTS tail         ] PASS
+
+XTS benchmark size: 128 MiB
+AES-XTS basic                     34.12 MiB/s checksum=8f
+AES-XTS AES-NI                   136.76 MiB/s checksum=8f
+AES-XTS VAES x8                  528.29 MiB/s checksum=8f
+./sm4_benchmark 64
+SM4 known-answer tests (GB/T 32907 example)
+[SM4 basic               ] PASS
+[SM4 T-table             ] PASS
+[SM4 AVX2 x8             ] PASS
+[SM4 CTR AVX2+tail       ] PASS
+
+SM4 benchmark size: 64 MiB
+SM4 basic                         89.79 MiB/s checksum=a6
+SM4 T-table                      114.75 MiB/s checksum=a6
+SM4 AVX2 x8                      211.63 MiB/s checksum=1e
+SM4-CTR basic                     87.93 MiB/s checksum=83
+SM4-CTR T-table                  112.54 MiB/s checksum=83
+SM4-CTR AVX2 x8                  209.39 MiB/s checksum=83
+python3 scripts/merge_results.py
+wrote /mnt/data/SymmetricCryptoOptimization_Final/results/all_benchmarks.csv (22 rows)

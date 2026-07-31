@@ -1,0 +1,8 @@
+SM3 equal-length independent-message throughput benchmark
+Message size: 8 MiB per lane
+scalar GPR                   lanes=16     149.20 MiB/s  speedup=  1.00x checksum=e8
+x86-avx2-hybrid              lanes=16    1294.05 MiB/s  speedup=  8.67x checksum=e8
+x86-avx512-hybrid            lanes=16    1655.29 MiB/s  speedup= 11.09x checksum=e8
+arm64-neon-hybrid            SKIP (unavailable)
+auto                         lanes=16    1665.45 MiB/s  speedup= 11.16x checksum=e8
+CSV written to results/sm3_benchmark.csv

@@ -1,0 +1,109 @@
+./aes_benchmark 2
+AES-128 known-answer tests (FIPS-197 vector)
+[basic encrypt       ] PASS
+[T-table encrypt     ] PASS
+[shuffle encrypt     ] PASS
+[AES-NI encrypt      ] PASS
+[basic decrypt       ] PASS
+[T-table decrypt     ] PASS
+[AES-NI decrypt      ] PASS
+[VAES x8 encrypt     ] PASS
+
+Benchmark size: 2 MiB per implementation
+AES-128 basic               53.16 MiB/s  checksum=9e
+AES-128 T-table            273.16 MiB/s  checksum=9e
+AES-128 shuffle             99.90 MiB/s  checksum=9e
+AES-128 AES-NI             577.39 MiB/s  checksum=9e
+AES-128 VAES x8           6281.53 MiB/s  checksum=e7
+
+CSV written to results/aes_benchmark.csv
+./ctr_benchmark 2
+AES-128 CTR known-answer tests (NIST SP 800-38A F.5.1)
+[CTR basic             ] PASS
+[CTR T-table           ] PASS
+[CTR shuffle           ] PASS
+[CTR AES-NI            ] PASS
+[CTR VAES x8           ] PASS
+[partial/carry test    ] PASS
+[VAES loop+tail test   ] PASS
+
+CTR benchmark size: 2 MiB per implementation
+AES-CTR basic                 48.57 MiB/s  checksum=fb
+AES-CTR T-table              270.73 MiB/s  checksum=fb
+AES-CTR shuffle              106.73 MiB/s  checksum=fb
+AES-CTR AES-NI               970.26 MiB/s  checksum=fb
+AES-CTR VAES x8             4842.74 MiB/s  checksum=fb
+
+CSV written to results/ctr_benchmark.csv
+./gcm_benchmark 2
+AES-128-GCM known-answer and robustness tests
+[GHASH basic vs PCLMUL       ] PASS
+[basic: empty plaintext      ] PASS
+[basic: one zero block       ] PASS
+[AESNI+PCLMUL: zero block    ] PASS
+[VAES8+PCLMUL: zero block    ] PASS
+[basic: AAD + partial block  ] PASS
+[AESNI+PCLMUL: AAD+partial   ] PASS
+[VAES8+PCLMUL: AAD+partial   ] PASS
+[modified tag rejection      ] PASS
+[general IV + in-place + tail] PASS
+
+GCM encryption benchmark: 2 MiB per implementation
+AES-GCM basic                        6.71 MiB/s  tag0=f9
+AESNI + PCLMULQDQ                  317.17 MiB/s  tag0=f9
+VAES x8 + PCLMULQDQ                547.67 MiB/s  tag0=f9
+CSV written to results/gcm_benchmark.csv
+./xts_benchmark 2
+AES-128-XTS known-answer tests (cross-checked with OpenSSL/cryptography)
+[basic full blocks        ] PASS
+[AES-NI full blocks       ] PASS
+[VAES x8 full blocks      ] PASS
+[basic CTS tail           ] PASS
+[AES-NI CTS tail          ] PASS
+[VAES x8 CTS tail         ] PASS
+
+XTS benchmark size: 2 MiB
+AES-XTS basic                     44.56 MiB/s checksum=d9
+AES-XTS AES-NI                   411.40 MiB/s checksum=d9
+AES-XTS VAES x8                  425.96 MiB/s checksum=d9
+./sm4_benchmark 2
+SM4 known-answer tests (GB/T 32907 example)
+[SM4 basic               ] PASS
+[SM4 T-table             ] PASS
+[SM4 AVX2 x8             ] PASS
+[SM4 CTR AVX2+tail       ] PASS
+
+SM4 benchmark size: 2 MiB
+SM4 basic                         68.07 MiB/s checksum=a6
+SM4 T-table                       94.94 MiB/s checksum=a6
+SM4 AVX2 x8                      232.82 MiB/s checksum=1e
+SM4-CTR basic                     66.57 MiB/s checksum=2c
+SM4-CTR T-table                   97.33 MiB/s checksum=2c
+SM4-CTR AVX2 x8                  172.12 MiB/s checksum=2c
+./lightweight_benchmark 2
+[GIFT-64 official vector 1   ] PASS
+[GIFT-64 T-table vector 1    ] PASS
+[GIFT-64 decrypt vector 1    ] PASS
+[GIFT-64 AVX2 x8 vector 1    ] PASS
+[GIFT-64 official vector 2   ] PASS
+[GIFT-64 T-table vector 2    ] PASS
+[GIFT-64 decrypt vector 2    ] PASS
+[GIFT-64 official vector 3   ] PASS
+[GIFT-64 T-table vector 3    ] PASS
+[GIFT-64 decrypt vector 3    ] PASS
+[TWINE-80 official vector    ] PASS
+[TWINE-80 decrypt            ] PASS
+[TWINE-128 official vector   ] PASS
+[TWINE-128 decrypt           ] PASS
+[TWINE-80 AVX2 x8            ] PASS
+[TWINE-128 AVX2 x8           ] PASS
+
+Lightweight benchmark size: 2 MiB
+GIFT-64 basic                        4.79 MiB/s checksum=18
+GIFT-64 T-table                     39.37 MiB/s checksum=18
+GIFT-64 AVX2 x8                     71.71 MiB/s checksum=bf
+TWINE-80 basic                      19.37 MiB/s checksum=6a
+TWINE-80 AVX2 x8                    44.68 MiB/s checksum=59
+TWINE-128 basic                     20.47 MiB/s checksum=d3
+TWINE-128 AVX2 x8                   43.83 MiB/s checksum=42
+CSV written to results/lightweight_benchmark.csv

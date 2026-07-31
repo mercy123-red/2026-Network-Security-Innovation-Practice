@@ -1,0 +1,140 @@
+make clean
+make[1]: Entering directory '/mnt/data/SymmetricCryptoOptimization_AllFour'
+rm -f src/aes_common.o src/aes_basic.o src/aes_ttable.o src/aes_shuffle.o src/aes_aesni.o src/aes_vaes.o src/aes_ctr.o src/aes_gcm.o src/aes_xts.o src/sm4_common.o src/sm4_basic.o src/sm4_ttable.o src/sm4_avx2.o src/sm4_ctr.o src/gift64.o src/twine.o tests/test_bench.o tests/test_ctr_bench.o tests/test_gcm_bench.o tests/test_xts_bench.o tests/test_sm4_bench.o tests/test_lightweight_bench.o
+rm -f aes_benchmark ctr_benchmark gcm_benchmark xts_benchmark sm4_benchmark lightweight_benchmark
+rm -f results/*_benchmark.csv results/all_benchmarks.csv results/performance.png
+make[1]: Leaving directory '/mnt/data/SymmetricCryptoOptimization_AllFour'
+make CFLAGS='-O1 -g -std=gnu11 -Wall -Wextra -Wpedantic -fsanitize=address,undefined -fno-omit-frame-pointer' LDFLAGS='-fsanitize=address,undefined' all
+make[1]: Entering directory '/mnt/data/SymmetricCryptoOptimization_AllFour'
+cc -Iinclude -O1 -g -std=gnu11 -Wall -Wextra -Wpedantic -fsanitize=address,undefined -fno-omit-frame-pointer -mssse3 -maes -mavx2 -mvaes -mpclmul -c src/aes_common.c -o src/aes_common.o
+cc -Iinclude -O1 -g -std=gnu11 -Wall -Wextra -Wpedantic -fsanitize=address,undefined -fno-omit-frame-pointer -mssse3 -maes -mavx2 -mvaes -mpclmul -c src/aes_basic.c -o src/aes_basic.o
+cc -Iinclude -O1 -g -std=gnu11 -Wall -Wextra -Wpedantic -fsanitize=address,undefined -fno-omit-frame-pointer -mssse3 -maes -mavx2 -mvaes -mpclmul -c src/aes_ttable.c -o src/aes_ttable.o
+cc -Iinclude -O1 -g -std=gnu11 -Wall -Wextra -Wpedantic -fsanitize=address,undefined -fno-omit-frame-pointer -mssse3 -maes -mavx2 -mvaes -mpclmul -c src/aes_shuffle.c -o src/aes_shuffle.o
+cc -Iinclude -O1 -g -std=gnu11 -Wall -Wextra -Wpedantic -fsanitize=address,undefined -fno-omit-frame-pointer -mssse3 -maes -mavx2 -mvaes -mpclmul -c src/aes_aesni.c -o src/aes_aesni.o
+cc -Iinclude -O1 -g -std=gnu11 -Wall -Wextra -Wpedantic -fsanitize=address,undefined -fno-omit-frame-pointer -mssse3 -maes -mavx2 -mvaes -mpclmul -c src/aes_vaes.c -o src/aes_vaes.o
+cc -Iinclude -O1 -g -std=gnu11 -Wall -Wextra -Wpedantic -fsanitize=address,undefined -fno-omit-frame-pointer -mssse3 -maes -mavx2 -mvaes -mpclmul -c src/aes_ctr.c -o src/aes_ctr.o
+cc -Iinclude -O1 -g -std=gnu11 -Wall -Wextra -Wpedantic -fsanitize=address,undefined -fno-omit-frame-pointer -mssse3 -maes -mavx2 -mvaes -mpclmul -c src/aes_gcm.c -o src/aes_gcm.o
+cc -Iinclude -O1 -g -std=gnu11 -Wall -Wextra -Wpedantic -fsanitize=address,undefined -fno-omit-frame-pointer -mssse3 -maes -mavx2 -mvaes -mpclmul -c src/aes_xts.c -o src/aes_xts.o
+cc -Iinclude -O1 -g -std=gnu11 -Wall -Wextra -Wpedantic -fsanitize=address,undefined -fno-omit-frame-pointer -mssse3 -maes -mavx2 -mvaes -mpclmul -c src/sm4_common.c -o src/sm4_common.o
+cc -Iinclude -O1 -g -std=gnu11 -Wall -Wextra -Wpedantic -fsanitize=address,undefined -fno-omit-frame-pointer -mssse3 -maes -mavx2 -mvaes -mpclmul -c src/sm4_basic.c -o src/sm4_basic.o
+cc -Iinclude -O1 -g -std=gnu11 -Wall -Wextra -Wpedantic -fsanitize=address,undefined -fno-omit-frame-pointer -mssse3 -maes -mavx2 -mvaes -mpclmul -c src/sm4_ttable.c -o src/sm4_ttable.o
+cc -Iinclude -O1 -g -std=gnu11 -Wall -Wextra -Wpedantic -fsanitize=address,undefined -fno-omit-frame-pointer -mssse3 -maes -mavx2 -mvaes -mpclmul -c src/sm4_avx2.c -o src/sm4_avx2.o
+cc -Iinclude -O1 -g -std=gnu11 -Wall -Wextra -Wpedantic -fsanitize=address,undefined -fno-omit-frame-pointer -mssse3 -maes -mavx2 -mvaes -mpclmul -c src/sm4_ctr.c -o src/sm4_ctr.o
+cc -Iinclude -O1 -g -std=gnu11 -Wall -Wextra -Wpedantic -fsanitize=address,undefined -fno-omit-frame-pointer -mssse3 -maes -mavx2 -mvaes -mpclmul -c src/gift64.c -o src/gift64.o
+cc -Iinclude -O1 -g -std=gnu11 -Wall -Wextra -Wpedantic -fsanitize=address,undefined -fno-omit-frame-pointer -mssse3 -maes -mavx2 -mvaes -mpclmul -c src/twine.c -o src/twine.o
+cc -Iinclude -O1 -g -std=gnu11 -Wall -Wextra -Wpedantic -fsanitize=address,undefined -fno-omit-frame-pointer -mssse3 -maes -mavx2 -mvaes -mpclmul -c tests/test_bench.c -o tests/test_bench.o
+cc src/aes_common.o src/aes_basic.o src/aes_ttable.o src/aes_shuffle.o src/aes_aesni.o src/aes_vaes.o src/aes_ctr.o src/aes_gcm.o src/aes_xts.o src/sm4_common.o src/sm4_basic.o src/sm4_ttable.o src/sm4_avx2.o src/sm4_ctr.o src/gift64.o src/twine.o tests/test_bench.o -fsanitize=address,undefined -o aes_benchmark
+cc -Iinclude -O1 -g -std=gnu11 -Wall -Wextra -Wpedantic -fsanitize=address,undefined -fno-omit-frame-pointer -mssse3 -maes -mavx2 -mvaes -mpclmul -c tests/test_ctr_bench.c -o tests/test_ctr_bench.o
+cc src/aes_common.o src/aes_basic.o src/aes_ttable.o src/aes_shuffle.o src/aes_aesni.o src/aes_vaes.o src/aes_ctr.o src/aes_gcm.o src/aes_xts.o src/sm4_common.o src/sm4_basic.o src/sm4_ttable.o src/sm4_avx2.o src/sm4_ctr.o src/gift64.o src/twine.o tests/test_ctr_bench.o -fsanitize=address,undefined -o ctr_benchmark
+cc -Iinclude -O1 -g -std=gnu11 -Wall -Wextra -Wpedantic -fsanitize=address,undefined -fno-omit-frame-pointer -mssse3 -maes -mavx2 -mvaes -mpclmul -c tests/test_gcm_bench.c -o tests/test_gcm_bench.o
+cc src/aes_common.o src/aes_basic.o src/aes_ttable.o src/aes_shuffle.o src/aes_aesni.o src/aes_vaes.o src/aes_ctr.o src/aes_gcm.o src/aes_xts.o src/sm4_common.o src/sm4_basic.o src/sm4_ttable.o src/sm4_avx2.o src/sm4_ctr.o src/gift64.o src/twine.o tests/test_gcm_bench.o -fsanitize=address,undefined -o gcm_benchmark
+cc -Iinclude -O1 -g -std=gnu11 -Wall -Wextra -Wpedantic -fsanitize=address,undefined -fno-omit-frame-pointer -mssse3 -maes -mavx2 -mvaes -mpclmul -c tests/test_xts_bench.c -o tests/test_xts_bench.o
+cc src/aes_common.o src/aes_basic.o src/aes_ttable.o src/aes_shuffle.o src/aes_aesni.o src/aes_vaes.o src/aes_ctr.o src/aes_gcm.o src/aes_xts.o src/sm4_common.o src/sm4_basic.o src/sm4_ttable.o src/sm4_avx2.o src/sm4_ctr.o src/gift64.o src/twine.o tests/test_xts_bench.o -fsanitize=address,undefined -o xts_benchmark
+cc -Iinclude -O1 -g -std=gnu11 -Wall -Wextra -Wpedantic -fsanitize=address,undefined -fno-omit-frame-pointer -mssse3 -maes -mavx2 -mvaes -mpclmul -c tests/test_sm4_bench.c -o tests/test_sm4_bench.o
+cc src/aes_common.o src/aes_basic.o src/aes_ttable.o src/aes_shuffle.o src/aes_aesni.o src/aes_vaes.o src/aes_ctr.o src/aes_gcm.o src/aes_xts.o src/sm4_common.o src/sm4_basic.o src/sm4_ttable.o src/sm4_avx2.o src/sm4_ctr.o src/gift64.o src/twine.o tests/test_sm4_bench.o -fsanitize=address,undefined -o sm4_benchmark
+cc -Iinclude -O1 -g -std=gnu11 -Wall -Wextra -Wpedantic -fsanitize=address,undefined -fno-omit-frame-pointer -mssse3 -maes -mavx2 -mvaes -mpclmul -c tests/test_lightweight_bench.c -o tests/test_lightweight_bench.o
+cc src/aes_common.o src/aes_basic.o src/aes_ttable.o src/aes_shuffle.o src/aes_aesni.o src/aes_vaes.o src/aes_ctr.o src/aes_gcm.o src/aes_xts.o src/sm4_common.o src/sm4_basic.o src/sm4_ttable.o src/sm4_avx2.o src/sm4_ctr.o src/gift64.o src/twine.o tests/test_lightweight_bench.o -fsanitize=address,undefined -o lightweight_benchmark
+make[1]: Leaving directory '/mnt/data/SymmetricCryptoOptimization_AllFour'
+ASAN_OPTIONS=detect_leaks=1 ./aes_benchmark 1
+AES-128 known-answer tests (FIPS-197 vector)
+[basic encrypt       ] PASS
+[T-table encrypt     ] PASS
+[shuffle encrypt     ] PASS
+[AES-NI encrypt      ] PASS
+[basic decrypt       ] PASS
+[T-table decrypt     ] PASS
+[AES-NI decrypt      ] PASS
+[VAES x8 encrypt     ] PASS
+
+Benchmark size: 1 MiB per implementation
+AES-128 basic                4.91 MiB/s  checksum=9e
+AES-128 T-table             31.36 MiB/s  checksum=9e
+AES-128 shuffle             28.49 MiB/s  checksum=9e
+AES-128 AES-NI             382.64 MiB/s  checksum=9e
+AES-128 VAES x8           2913.94 MiB/s  checksum=e7
+
+CSV written to results/aes_benchmark.csv
+ASAN_OPTIONS=detect_leaks=1 ./ctr_benchmark 1
+AES-128 CTR known-answer tests (NIST SP 800-38A F.5.1)
+[CTR basic             ] PASS
+[CTR T-table           ] PASS
+[CTR shuffle           ] PASS
+[CTR AES-NI            ] PASS
+[CTR VAES x8           ] PASS
+[partial/carry test    ] PASS
+[VAES loop+tail test   ] PASS
+
+CTR benchmark size: 1 MiB per implementation
+AES-CTR basic                  4.87 MiB/s  checksum=2d
+AES-CTR T-table               27.42 MiB/s  checksum=2d
+AES-CTR shuffle               25.77 MiB/s  checksum=2d
+AES-CTR AES-NI               223.36 MiB/s  checksum=2d
+AES-CTR VAES x8              272.49 MiB/s  checksum=2d
+
+CSV written to results/ctr_benchmark.csv
+ASAN_OPTIONS=detect_leaks=1 ./gcm_benchmark 1
+AES-128-GCM known-answer and robustness tests
+[GHASH basic vs PCLMUL       ] PASS
+[basic: empty plaintext      ] PASS
+[basic: one zero block       ] PASS
+[AESNI+PCLMUL: zero block    ] PASS
+[VAES8+PCLMUL: zero block    ] PASS
+[basic: AAD + partial block  ] PASS
+[AESNI+PCLMUL: AAD+partial   ] PASS
+[VAES8+PCLMUL: AAD+partial   ] PASS
+[modified tag rejection      ] PASS
+[general IV + in-place + tail] PASS
+
+GCM encryption benchmark: 1 MiB per implementation
+AES-GCM basic                        1.28 MiB/s  tag0=a0
+AESNI + PCLMULQDQ                  125.46 MiB/s  tag0=a0
+VAES x8 + PCLMULQDQ                141.26 MiB/s  tag0=a0
+CSV written to results/gcm_benchmark.csv
+ASAN_OPTIONS=detect_leaks=1 ./xts_benchmark 1
+AES-128-XTS known-answer tests (cross-checked with OpenSSL/cryptography)
+[basic full blocks        ] PASS
+[AES-NI full blocks       ] PASS
+[VAES x8 full blocks      ] PASS
+[basic CTS tail           ] PASS
+[AES-NI CTS tail          ] PASS
+[VAES x8 CTS tail         ] PASS
+
+XTS benchmark size: 1 MiB
+AES-XTS basic                      4.15 MiB/s checksum=6c
+AES-XTS AES-NI                    85.96 MiB/s checksum=6c
+AES-XTS VAES x8                  105.30 MiB/s checksum=6c
+ASAN_OPTIONS=detect_leaks=1 ./sm4_benchmark 1
+SM4 known-answer tests (GB/T 32907 example)
+[SM4 basic               ] PASS
+[SM4 T-table             ] PASS
+[SM4 AVX2 x8             ] PASS
+[SM4 CTR AVX2+tail       ] PASS
+
+SM4 benchmark size: 1 MiB
+SM4 basic                         51.71 MiB/s checksum=a6
+SM4 T-table                       57.38 MiB/s checksum=a6
+SM4 AVX2 x8                      137.29 MiB/s checksum=1e
+SM4-CTR basic                     47.61 MiB/s checksum=9b
+SM4-CTR T-table                   53.60 MiB/s checksum=9b
+SM4-CTR AVX2 x8                   98.08 MiB/s checksum=9b
+ASAN_OPTIONS=detect_leaks=1 ./lightweight_benchmark 1
+[GIFT-64 official vector     ] PASS
+[GIFT-64 T-table vector      ] PASS
+[GIFT-64 decrypt             ] PASS
+[GIFT-64 AVX2 x8             ] PASS
+[TWINE-80 official vector    ] PASS
+[TWINE-80 decrypt            ] PASS
+[TWINE-128 official vector   ] PASS
+[TWINE-128 decrypt           ] PASS
+[TWINE-80 AVX2 x8            ] PASS
+[TWINE-128 AVX2 x8           ] PASS
+
+Lightweight benchmark size: 1 MiB
+GIFT-64 basic                        1.42 MiB/s checksum=18
+GIFT-64 T-table                      9.53 MiB/s checksum=18
+GIFT-64 AVX2 x8                     25.76 MiB/s checksum=bf
+TWINE-80 basic                       2.02 MiB/s checksum=6a
+TWINE-80 AVX2 x8                     6.68 MiB/s checksum=59
+TWINE-128 basic                      2.03 MiB/s checksum=d3
+TWINE-128 AVX2 x8                    6.40 MiB/s checksum=42
+CSV written to results/lightweight_benchmark.csv

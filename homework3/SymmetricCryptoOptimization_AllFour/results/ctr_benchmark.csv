@@ -1,0 +1,6 @@
+implementation,mib_per_second
+AES-CTR basic,69.905772
+AES-CTR T-table,327.702621
+AES-CTR shuffle,168.141704
+AES-CTR AES-NI,1176.450725
+AES-CTR VAES x8,4126.475175

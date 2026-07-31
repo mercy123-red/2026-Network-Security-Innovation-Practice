@@ -1,0 +1,4 @@
+implementation,lanes,mib_per_second,speedup,checksum
+scalar GPR,16,138.900248,1.000000,232
+x86-avx2-hybrid,16,1104.356533,7.950717,232
+auto,16,1203.487828,8.664404,232

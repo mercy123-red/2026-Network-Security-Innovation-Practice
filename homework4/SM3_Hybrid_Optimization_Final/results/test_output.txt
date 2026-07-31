@@ -1,0 +1,54 @@
+SM3 scalar known-answer tests
+[empty string                    ] PASS
+[abc                             ] PASS
+[abcd repeated 16 times          ] PASS
+[streaming/chunked update        ] PASS
+
+SIMD/GPR hybrid cross-checks against scalar implementation
+[x86-avx2-hybrid len=0 count=17  ] PASS
+[x86-avx2-hybrid len=3 count=17  ] PASS
+[x86-avx2-hybrid len=55 count=17 ] PASS
+[x86-avx2-hybrid len=56 count=17 ] PASS
+[x86-avx2-hybrid len=63 count=17 ] PASS
+[x86-avx2-hybrid len=64 count=17 ] PASS
+[x86-avx2-hybrid len=65 count=17 ] PASS
+[x86-avx2-hybrid len=127 count=17] PASS
+[x86-avx2-hybrid len=128 count=17] PASS
+[x86-avx2-hybrid len=129 count=17] PASS
+[x86-avx2-hybrid len=1000 count=17] PASS
+[x86-avx512-hybrid len=0 count=17] PASS
+[x86-avx512-hybrid len=3 count=17] PASS
+[x86-avx512-hybrid len=55 count=17] PASS
+[x86-avx512-hybrid len=56 count=17] PASS
+[x86-avx512-hybrid len=63 count=17] PASS
+[x86-avx512-hybrid len=64 count=17] PASS
+[x86-avx512-hybrid len=65 count=17] PASS
+[x86-avx512-hybrid len=127 count=17] PASS
+[x86-avx512-hybrid len=128 count=17] PASS
+[x86-avx512-hybrid len=129 count=17] PASS
+[x86-avx512-hybrid len=1000 count=17] PASS
+[arm64-neon-hybrid               ] SKIP (unavailable)
+[arm64-neon-hybrid               ] SKIP (unavailable)
+[arm64-neon-hybrid               ] SKIP (unavailable)
+[arm64-neon-hybrid               ] SKIP (unavailable)
+[arm64-neon-hybrid               ] SKIP (unavailable)
+[arm64-neon-hybrid               ] SKIP (unavailable)
+[arm64-neon-hybrid               ] SKIP (unavailable)
+[arm64-neon-hybrid               ] SKIP (unavailable)
+[arm64-neon-hybrid               ] SKIP (unavailable)
+[arm64-neon-hybrid               ] SKIP (unavailable)
+[arm64-neon-hybrid               ] SKIP (unavailable)
+[auto len=0 count=17             ] PASS
+[auto len=3 count=17             ] PASS
+[auto len=55 count=17            ] PASS
+[auto len=56 count=17            ] PASS
+[auto len=63 count=17            ] PASS
+[auto len=64 count=17            ] PASS
+[auto len=65 count=17            ] PASS
+[auto len=127 count=17           ] PASS
+[auto len=128 count=17           ] PASS
+[auto len=129 count=17           ] PASS
+[auto len=1000 count=17          ] PASS
+
+Best runtime backend: x86-avx512-hybrid
+ALL TESTS PASSED

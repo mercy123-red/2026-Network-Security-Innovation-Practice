@@ -1,0 +1,4 @@
+implementation,mib_per_second
+AES-GCM basic,11.278058
+AESNI + PCLMULQDQ,541.129819
+VAES x8 + PCLMULQDQ,722.486117

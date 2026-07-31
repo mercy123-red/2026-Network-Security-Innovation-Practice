@@ -1,0 +1,6 @@
+implementation,mib_per_second
+AES-128 basic,69.738316
+AES-128 T-table,328.792493
+AES-128 shuffle,164.549963
+AES-128 AES-NI,1276.021060
+AES-128 VAES x8,9730.690966

@@ -1,0 +1,7 @@
+implementation,mib_per_second
+SM4 basic,107.506409
+SM4 T-table,170.792952
+SM4 AVX2 x8,355.820879
+SM4-CTR basic,101.412564
+SM4-CTR T-table,164.061255
+SM4-CTR AVX2 x8,366.321156

@@ -1,0 +1,36 @@
+system:
+  verbose: 1
+  narrow_output: false
+  parallel_requests: false
+  parallel_attempts: false
+  lite: true
+
+run:
+  seed: 20260725
+  deprefix: true
+  generations: 2
+  soft_probe_prompt_cap: 5
+
+plugins:
+  extended_detectors: false
+  generators:
+    huggingface:
+      Model:
+        max_tokens: 32
+        temperature: 0.7
+        hf_args:
+          torch_dtype: float32
+          do_sample: true
+          device: cpu
+  probes:
+    promptinject:
+      generation_params: []
+    encoding:
+      InjectBase64:
+        payloads:
+          - default
+
+reporting:
+  report_dir: "E:/桌面/云数据/密码创新实践/实验七/garak实验/results/garak_runs"
+  confidence_interval_method: none
+  show_100_pass_modules: true

@@ -1,0 +1,212 @@
+(base) mercy@AAA:~/SymmetricCryptoOptimization_Final$ chmod +x run_all.sh
+./run_all.sh
+rm -f src/aes_common.o src/aes_basic.o src/aes_ttable.o src/aes_shuffle.o src/aes_aesni.o src/aes_vaes.o src/aes_ctr.o src/aes_gcm.o src/aes_xts.o src/sm4_common.o src/sm4_basic.o src/sm4_ttable.o src/sm4_avx2.o src/sm4_ctr.o tests/test_bench.o tests/test_ctr_bench.o tests/test_gcm_bench.o tests/test_xts_bench.o tests/test_sm4_bench.o
+rm -f aes_benchmark ctr_benchmark gcm_benchmark xts_benchmark sm4_benchmark
+rm -f results/*_benchmark.csv results/all_benchmarks.csv results/performance.png
+cc -Iinclude -O3 -std=gnu11 -Wall -Wextra -Wpedantic -mssse3 -maes -mavx2 -mvaes -mpclmul -c src/aes_common.c -o src/aes_common.o
+cc -Iinclude -O3 -std=gnu11 -Wall -Wextra -Wpedantic -mssse3 -maes -mavx2 -mvaes -mpclmul -c src/aes_basic.c -o src/aes_basic.o
+cc -Iinclude -O3 -std=gnu11 -Wall -Wextra -Wpedantic -mssse3 -maes -mavx2 -mvaes -mpclmul -c src/aes_ttable.c -o src/aes_ttable.o
+cc -Iinclude -O3 -std=gnu11 -Wall -Wextra -Wpedantic -mssse3 -maes -mavx2 -mvaes -mpclmul -c src/aes_shuffle.c -o src/aes_shuffle.o
+cc -Iinclude -O3 -std=gnu11 -Wall -Wextra -Wpedantic -mssse3 -maes -mavx2 -mvaes -mpclmul -c src/aes_aesni.c -o src/aes_aesni.o
+cc -Iinclude -O3 -std=gnu11 -Wall -Wextra -Wpedantic -mssse3 -maes -mavx2 -mvaes -mpclmul -c src/aes_vaes.c -o src/aes_vaes.o
+cc -Iinclude -O3 -std=gnu11 -Wall -Wextra -Wpedantic -mssse3 -maes -mavx2 -mvaes -mpclmul -c src/aes_ctr.c -o src/aes_ctr.o
+cc -Iinclude -O3 -std=gnu11 -Wall -Wextra -Wpedantic -mssse3 -maes -mavx2 -mvaes -mpclmul -c src/aes_gcm.c -o src/aes_gcm.o
+cc -Iinclude -O3 -std=gnu11 -Wall -Wextra -Wpedantic -mssse3 -maes -mavx2 -mvaes -mpclmul -c src/aes_xts.c -o src/aes_xts.o
+cc -Iinclude -O3 -std=gnu11 -Wall -Wextra -Wpedantic -mssse3 -maes -mavx2 -mvaes -mpclmul -c src/sm4_common.c -o src/sm4_common.o
+cc -Iinclude -O3 -std=gnu11 -Wall -Wextra -Wpedantic -mssse3 -maes -mavx2 -mvaes -mpclmul -c src/sm4_basic.c -o src/sm4_basic.o
+cc -Iinclude -O3 -std=gnu11 -Wall -Wextra -Wpedantic -mssse3 -maes -mavx2 -mvaes -mpclmul -c src/sm4_ttable.c -o src/sm4_ttable.o
+cc -Iinclude -O3 -std=gnu11 -Wall -Wextra -Wpedantic -mssse3 -maes -mavx2 -mvaes -mpclmul -c src/sm4_avx2.c -o src/sm4_avx2.o
+cc -Iinclude -O3 -std=gnu11 -Wall -Wextra -Wpedantic -mssse3 -maes -mavx2 -mvaes -mpclmul -c src/sm4_ctr.c -o src/sm4_ctr.o
+cc -Iinclude -O3 -std=gnu11 -Wall -Wextra -Wpedantic -mssse3 -maes -mavx2 -mvaes -mpclmul -c tests/test_bench.c -o tests/test_bench.o
+cc -Iinclude -O3 -std=gnu11 -Wall -Wextra -Wpedantic -mssse3 -maes -mavx2 -mvaes -mpclmul -c tests/test_ctr_bench.c -o tests/test_ctr_bench.o
+cc -Iinclude -O3 -std=gnu11 -Wall -Wextra -Wpedantic -mssse3 -maes -mavx2 -mvaes -mpclmul -c tests/test_gcm_bench.c -o tests/test_gcm_bench.o
+cc -Iinclude -O3 -std=gnu11 -Wall -Wextra -Wpedantic -mssse3 -maes -mavx2 -mvaes -mpclmul -c tests/test_xts_bench.c -o tests/test_xts_bench.o
+cc -Iinclude -O3 -std=gnu11 -Wall -Wextra -Wpedantic -mssse3 -maes -mavx2 -mvaes -mpclmul -c tests/test_sm4_bench.c -o tests/test_sm4_bench.o
+tests/test_sm4_bench.c: In function ‘main’:
+tests/test_sm4_bench.c:70:11: warning: ignoring return value of ‘system’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+   70 |     (void)system("mkdir -p results");FILE*csv=fopen("results/sm4_benchmark.csv","w");if(csv)fputs("implementation,mib_per_second\n",csv);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+tests/test_xts_bench.c: In function ‘main’:
+tests/test_xts_bench.c:109:11: warning: ignoring return value of ‘system’ declared with attribute ‘warn_unused_result’ -Wunused-result]
+  109 |     (void)system("mkdir -p results");
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+cc src/aes_common.o src/aes_basic.o src/aes_ttable.o src/aes_shuffle.o src/aes_aesni.o src/aes_vaes.o src/aes_ctr.o src/aes_gcm.o src/aes_xts.o src/sm4_common.o src/sm4_basic.o src/sm4_ttable.o src/sm4_avx2.o src/sm4_ctr.o tests/test_bench.o  -o aes_benchmark
+cc src/aes_common.o src/aes_basic.o src/aes_ttable.o src/aes_shuffle.o src/aes_aesni.o src/aes_vaes.o src/aes_ctr.o src/aes_gcm.o src/aes_xts.o src/sm4_common.o src/sm4_basic.o src/sm4_ttable.o src/sm4_avx2.o src/sm4_ctr.o tests/test_ctr_bench.o  -o ctr_benchmark
+cc src/aes_common.o src/aes_basic.o src/aes_ttable.o src/aes_shuffle.o src/aes_aesni.o src/aes_vaes.o src/aes_ctr.o src/aes_gcm.o src/aes_xts.o src/sm4_common.o src/sm4_basic.o src/sm4_ttable.o src/sm4_avx2.o src/sm4_ctr.o tests/test_gcm_bench.o  -o gcm_benchmark
+cc src/aes_common.o src/aes_basic.o src/aes_ttable.o src/aes_shuffle.o src/aes_aesni.o src/aes_vaes.o src/aes_ctr.o src/aes_gcm.o src/aes_xts.o src/sm4_common.o src/sm4_basic.o src/sm4_ttable.o src/sm4_avx2.o src/sm4_ctr.o tests/test_xts_bench.o  -o xts_benchmark
+cc src/aes_common.o src/aes_basic.o src/aes_ttable.o src/aes_shuffle.o src/aes_aesni.o src/aes_vaes.o src/aes_ctr.o src/aes_gcm.o src/aes_xts.o src/sm4_common.o src/sm4_basic.o src/sm4_ttable.o src/sm4_avx2.o src/sm4_ctr.o tests/test_sm4_bench.o  -o sm4_benchmark
+./aes_benchmark 2
+AES-128 known-answer tests (FIPS-197 vector)
+[basic encrypt       ] PASS
+[T-table encrypt     ] PASS
+[shuffle encrypt     ] PASS
+[AES-NI encrypt      ] PASS
+[basic decrypt       ] PASS
+[T-table decrypt     ] PASS
+[AES-NI decrypt      ] PASS
+[VAES x8 encrypt     ] PASS
+
+Benchmark size: 2 MiB per implementation
+AES-128 basic               56.39 MiB/s  checksum=9e
+AES-128 T-table            285.45 MiB/s  checksum=9e
+AES-128 shuffle            129.47 MiB/s  checksum=9e
+AES-128 AES-NI             990.46 MiB/s  checksum=9e
+AES-128 VAES x8           5980.63 MiB/s  checksum=e7
+
+CSV written to results/aes_benchmark.csv
+./ctr_benchmark 2
+AES-128 CTR known-answer tests (NIST SP 800-38A F.5.1)
+[CTR basic             ] PASS
+[CTR T-table           ] PASS
+[CTR shuffle           ] PASS
+[CTR AES-NI            ] PASS
+[CTR VAES x8           ] PASS
+[partial/carry test    ] PASS
+[VAES loop+tail test   ] PASS
+
+CTR benchmark size: 2 MiB per implementation
+AES-CTR basic                 60.62 MiB/s  checksum=fb
+AES-CTR T-table              199.03 MiB/s  checksum=fb
+AES-CTR shuffle              134.20 MiB/s  checksum=fb
+AES-CTR AES-NI               881.56 MiB/s  checksum=fb
+AES-CTR VAES x8             2267.22 MiB/s  checksum=fb
+
+CSV written to results/ctr_benchmark.csv
+./gcm_benchmark 2
+AES-128-GCM known-answer and robustness tests
+[GHASH basic vs PCLMUL       ] PASS
+[basic: empty plaintext      ] PASS
+[basic: one zero block       ] PASS
+[AESNI+PCLMUL: zero block    ] PASS
+[VAES8+PCLMUL: zero block    ] PASS
+[basic: AAD + partial block  ] PASS
+[AESNI+PCLMUL: AAD+partial   ] PASS
+[VAES8+PCLMUL: AAD+partial   ] PASS
+[modified tag rejection      ] PASS
+[general IV + in-place + tail] PASS
+
+GCM encryption benchmark: 2 MiB per implementation
+AES-GCM basic                        9.45 MiB/s  tag0=f9
+AESNI + PCLMULQDQ                  393.48 MiB/s  tag0=f9
+VAES x8 + PCLMULQDQ                594.74 MiB/s  tag0=f9
+CSV written to results/gcm_benchmark.csv
+./xts_benchmark 2
+AES-128-XTS known-answer tests (cross-checked with OpenSSL/cryptography)
+[basic full blocks        ] PASS
+[AES-NI full blocks       ] PASS
+[VAES x8 full blocks      ] PASS
+[basic CTS tail           ] PASS
+[AES-NI CTS tail          ] PASS
+[VAES x8 CTS tail         ] PASS
+
+XTS benchmark size: 2 MiB
+AES-XTS basic                     54.22 MiB/s checksum=d9
+AES-XTS AES-NI                   419.65 MiB/s checksum=d9
+AES-XTS VAES x8                  913.22 MiB/s checksum=d9
+./sm4_benchmark 2
+SM4 known-answer tests (GB/T 32907 example)
+[SM4 basic               ] PASS
+[SM4 T-table             ] PASS
+[SM4 AVX2 x8             ] PASS
+[SM4 CTR AVX2+tail       ] PASS
+
+SM4 benchmark size: 2 MiB
+SM4 basic                         82.83 MiB/s checksum=a6
+SM4 T-table                      133.36 MiB/s checksum=a6
+SM4 AVX2 x8                      259.37 MiB/s checksum=1e
+SM4-CTR basic                     76.21 MiB/s checksum=2c
+SM4-CTR T-table                  129.69 MiB/s checksum=2c
+SM4-CTR AVX2 x8                  245.72 MiB/s checksum=2c
+./aes_benchmark 64
+AES-128 known-answer tests (FIPS-197 vector)
+[basic encrypt       ] PASS
+[T-table encrypt     ] PASS
+[shuffle encrypt     ] PASS
+[AES-NI encrypt      ] PASS
+[basic decrypt       ] PASS
+[T-table decrypt     ] PASS
+[AES-NI decrypt      ] PASS
+[VAES x8 encrypt     ] PASS
+
+Benchmark size: 64 MiB per implementation
+AES-128 basic               58.55 MiB/s  checksum=9e
+AES-128 T-table            277.15 MiB/s  checksum=9e
+AES-128 shuffle            128.42 MiB/s  checksum=9e
+AES-128 AES-NI             948.97 MiB/s  checksum=9e
+AES-128 VAES x8           7867.71 MiB/s  checksum=e7
+
+CSV written to results/aes_benchmark.csv
+./ctr_benchmark 128
+AES-128 CTR known-answer tests (NIST SP 800-38A F.5.1)
+[CTR basic             ] PASS
+[CTR T-table           ] PASS
+[CTR shuffle           ] PASS
+[CTR AES-NI            ] PASS
+[CTR VAES x8           ] PASS
+[partial/carry test    ] PASS
+[VAES loop+tail test   ] PASS
+
+CTR benchmark size: 128 MiB per implementation
+AES-CTR basic                 55.45 MiB/s  checksum=28
+AES-CTR T-table              265.02 MiB/s  checksum=28
+AES-CTR shuffle              126.36 MiB/s  checksum=28
+AES-CTR AES-NI               910.06 MiB/s  checksum=28
+AES-CTR VAES x8             3870.23 MiB/s  checksum=28
+
+CSV written to results/ctr_benchmark.csv
+./gcm_benchmark 64
+AES-128-GCM known-answer and robustness tests
+[GHASH basic vs PCLMUL       ] PASS
+[basic: empty plaintext      ] PASS
+[basic: one zero block       ] PASS
+[AESNI+PCLMUL: zero block    ] PASS
+[VAES8+PCLMUL: zero block    ] PASS
+[basic: AAD + partial block  ] PASS
+[AESNI+PCLMUL: AAD+partial   ] PASS
+[VAES8+PCLMUL: AAD+partial   ] PASS
+[modified tag rejection      ] PASS
+[general IV + in-place + tail] PASS
+
+GCM encryption benchmark: 64 MiB per implementation
+AES-GCM basic                        8.84 MiB/s  tag0=75
+AESNI + PCLMULQDQ                  393.69 MiB/s  tag0=75
+VAES x8 + PCLMULQDQ                527.89 MiB/s  tag0=75
+CSV written to results/gcm_benchmark.csv
+./xts_benchmark 128
+AES-128-XTS known-answer tests (cross-checked with OpenSSL/cryptography)
+[basic full blocks        ] PASS
+[AES-NI full blocks       ] PASS
+[VAES x8 full blocks      ] PASS
+[basic CTS tail           ] PASS
+[AES-NI CTS tail          ] PASS
+[VAES x8 CTS tail         ] PASS
+
+XTS benchmark size: 128 MiB
+AES-XTS basic                     53.47 MiB/s checksum=8f
+AES-XTS AES-NI                   411.32 MiB/s checksum=8f
+AES-XTS VAES x8                  698.44 MiB/s checksum=8f
+./sm4_benchmark 64
+SM4 known-answer tests (GB/T 32907 example)
+[SM4 basic               ] PASS
+[SM4 T-table             ] PASS
+[SM4 AVX2 x8             ] PASS
+[SM4 CTR AVX2+tail       ] PASS
+
+SM4 benchmark size: 64 MiB
+SM4 basic                         79.57 MiB/s checksum=a6
+SM4 T-table                      116.06 MiB/s checksum=a6
+SM4 AVX2 x8                      225.44 MiB/s checksum=1e
+SM4-CTR basic                     74.33 MiB/s checksum=83
+SM4-CTR T-table                  116.84 MiB/s checksum=83
+SM4-CTR AVX2 x8                  259.04 MiB/s checksum=83
+python3 scripts/merge_results.py
+wrote /home/mercy/SymmetricCryptoOptimization_Final/results/all_benchmarks.csv (22 rows)
+python3 scripts/merge_results.py
+wrote /home/mercy/SymmetricCryptoOptimization_Final/results/all_benchmarks.csv (22 rows)
+python3 scripts/plot_results.py
+qt.qpa.plugin: Could not load the Qt platform plugin "xcb" in "" even though it was found.
+This application failed to start because no Qt platform plugin could be initialized. Reinstalling the application may fix this problem.
+
+Available platform plugins are: eglfs, minimal, minimalegl, offscreen, vnc, webgl, xcb.
+
+make: *** [Makefile:82: plot] Aborted (core dumped)
